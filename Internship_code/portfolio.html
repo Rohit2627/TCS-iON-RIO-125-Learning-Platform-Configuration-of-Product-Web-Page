@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #32ac46 !important;
+  padding: 20px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  font-size: 40px;
+  word-break: break-all;
+
+}
+
+.row {
+  margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column (if you want) */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* Clear floats after rows */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .column {
+    width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+/* Updated CSS with box shadow, hover effects, and formal background */
+
+.content {
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add box shadow */
+  transition: box-shadow 0.3s, transform 0.3s; /* Add transition for hover effect */
+}
+
+.content:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Increase box shadow on hover */
+  transform: translateY(-5px); /* Move the element upwards on hover */
+}
+
+/* Background style */
+/* Updated CSS for the new heading */
+.let {
+  font-size: 30px; /* Adjust font size as needed */
+  color: #333; /* Adjust color as needed */
+  margin-bottom: 20px; /* Add some bottom margin for spacing */
+}
+
+
+    </style>
+</head>
+<body>
+   <!-- MAIN (Center website) -->
+<div class="main">
+
+    <h2 class="let">Let's Know About Our Work</h2> <!-- New heading -->
+    <hr>
+    
+    <h2>PORTFOLIO</h2>
+    
+    
+    <!-- Portfolio Gallery Grid -->
+    <div class="row">
+      <div class="column">
+        <div class="content">
+          <img src="img/ani1.jpg" alt="Mountains" style="width:100%">
+          <h3>Animals</h3>
+          <p>Animals, diverse members of the kingdom Animalia, inhabit various ecosystems, from lush rainforests to icy polar regions. They play crucial roles as predators, prey, and contributors to ecosystem balance. Human activities, including habitat destruction and climate change, pose significant threats to animal populations worldwide. Despite challenges, animals inspire awe with their intricate behaviors and adaptations, prompting efforts for conservation and sustainability.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <img src="img/ani2.jpg" alt="Lights" style="width:100%">
+          <h3>Tiger</h3>
+          <p>Tigers, majestic apex predators, are the largest members of the cat family, known for their distinctive orange fur with black stripes. They inhabit diverse habitats, from dense forests to grasslands, primarily found in Asia. With powerful jaws and sharp claws, tigers are formidable hunters, preying on various animals, including deer and wild boar. Sadly, habitat loss and poaching have severely threatened tiger populations, leading to conservation efforts to protect these iconic species. </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <img src="img/ani3.jpg" alt="Nature" style="width:100%">
+          <h3>Eagle</h3>
+          <p>Eagles, renowned for their keen eyesight and majestic flight, are large birds of prey belonging to the family Accipitridae. They are found on every continent except Antarctica, with species adapted to various habitats, including mountains, forests, and open plains. Known for their sharp talons and powerful beaks, eagles are skilled hunters, primarily feeding on small mammals, fish, and other birds. Some eagle species, like the Bald Eagle and Golden Eagle, hold cultural significance in many societies and serve as national symbols</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <img src="img/ani4.jpg" alt="Mountains" style="width:100%">
+          <h3>Rabbit</h3>
+          <p>Rabbits, small mammals belonging to the family Leporidae, are known for their soft fur, long ears, and distinctive hopping gait. They inhabit a variety of habitats worldwide, from forests and grasslands to deserts and urban areas. Rabbits are prolific breeders, with females capable of producing multiple litters each year. They primarily feed on grasses, herbs, and vegetables, but can also cause damage to crops and gardens. Rabbits are preyed upon by a variety of predators, including foxes, birds of prey, and snakes. </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="content">
+      <img src="img/ani5.jpg" alt="Bear" style="width:100%">
+      <h3>Bear</h3>
+      <p>Bears, large mammals belonging to the family Ursidae, are known for their robust bodies, thick fur, and plantigrade stance. They are distributed across various habitats worldwide, including forests, mountains, and Arctic tundra. Bears are omnivorous, with diets consisting of plants, berries, insects, fish, and occasionally, small mammals. They possess strong limbs and sharp claws, enabling them to forage, climb, and defend themselves effectively. Bears exhibit diverse behaviors, from solitary habits to social interactions, depending on the species and environmental conditions. Human activities such as habitat destruction, poaching, and climate change pose significant threats to bear populations, leading to conservation efforts to protect these iconic species.</p>
+    </div>
+    
+    <!-- END MAIN -->
+    </div>
+    
+</body>
+</html>

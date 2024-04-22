@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Products</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9f9f9; /* Formal background color */
+    }
+
+    .product-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 20px auto;
+    }
+
+    .product-container h2 {
+        margin-bottom: 10px;
+    }
+
+    .product-item {
+        background-color: #f0f0f0; /* Colorful product info div */
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px; /* Space between each product info */
+    }
+
+    .product-item p {
+        margin-bottom: 5px;
+    }
+
+    .product-item button {
+        background-color: #007bff; /* Button color */
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .product-item button:hover {
+        background-color: #0056b3; /* Hover color */
+    }
+
+    .navigation-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: #007bff; /* Button color */
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .navigation-button:hover {
+        background-color: #0056b3; /* Hover color */
+    }
+
+    .head{
+        margin-left: 40%;
+    }
+</style>
+</head>
+<body>
+
+<button class="navigation-button" onclick="goToProductPage()">Back to Products</button>
+
+<h2 class="head">MY PRODUCTS</h2>
+
+<div class="product-container" id="productContainer">
+    <h2>MY PRODUCTS</h2>
+    <!-- Product details will be dynamically added here -->
+</div>
+
+<script>
+    function goToProductPage() {
+        window.location.href = 'product.html';
+    }
+
+    window.onload = function() {
+        // Retrieve products array from localStorage
+        var products = JSON.parse(localStorage.getItem('products')) || [];
+        
+        // Get the product container
+        var productContainer = document.getElementById('productContainer');
+        
+        // Clear the existing content
+        productContainer.innerHTML = '';
+        
+        // Display product details on the page
+        if (products.length > 0) {
+            products.forEach(function(product, index) {
+                var productDiv = document.createElement('div');
+                productDiv.classList.add('product-item');
+                productDiv.innerHTML = `
+                    <p><strong>Product Name:</strong> ${product.productName}</p>
+                    <p><strong>Segment:</strong> ${product.segment}</p>
+                    <p><strong>Price:</strong> ${product.price}</p>
+                    <p><strong>Duration:</strong> ${product.duration}</p>
+                    <p><strong>Mode:</strong> ${product.mode}</p>
+                    <p><strong>Level:</strong> ${product.level}</p>
+                    <p><strong>Code:</strong> ${product.code}</p>
+                    <button onclick="deleteProduct(${index})">Delete</button>
+                `;
+                productContainer.appendChild(productDiv);
+            });
+        } else {
+            // Display a message if no products found
+            productContainer.innerHTML = "<p>No products found.</p>";
+        }
+    }
+
+    function deleteProduct(index) {
+        // Retrieve products array from localStorage
+        var products = JSON.parse(localStorage.getItem('products')) || [];
+        
+        // Remove the product at the specified index
+        products.splice(index, 1);
+        
+        // Update localStorage with the modified products array
+        localStorage.setItem('products', JSON.stringify(products));
+        
+        // Refresh the page to reflect the changes
+        location.reload();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unique Code Generator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Add styles for the form container */
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+/* Add styles for the form inputs and labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"] {
+    width: calc(100% - 12px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Add styles for the popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    width: 400px;
+}
+
+.popup h2 {
+    margin-bottom: 20px;
+}
+
+.popup input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.popup input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.popup p {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.popup .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #aaa;
+}
+
+.popup .close:hover {
+    color: #777;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Generate Unique Code</h2>
+        <form id="userInfoForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="text" id="dob" name="dob" placeholder="YYYY-MM-DD" required>
+
+            <input type="submit" value="Generate Code">
+        </form>
+    </div>
+</div>
+
+<div class="popup" id="popup">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <h2>Your Unique Code</h2>
+    <p id="uniqueCode"></p>
+    <input type="text" id="enteredCode" placeholder="Enter your code">
+    <input type="submit" value="Submit Code" onclick="submitCode()">
+    <p>Note down the code for accessing the product.</p>
+</div>
+
+<script>
+    document.getElementById('userInfoForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        var firstName = document.getElementById('firstName').value;
+        var lastName = document.getElementById('lastName').value;
+        var dob = document.getElementById('dob').value;
+    
+        var uniqueCode = generateUniqueCode(firstName, lastName, dob);
+        
+        var urlParams = new URLSearchParams(window.location.search);
+        var productId = urlParams.get('productId');
+        
+        // Prepare product details object based on the product ID
+        var productDetails = {};
+        if (productId === '1') {
+            productDetails = {
+                firstName: firstName,
+                lastName: lastName,
+                dob: dob,
+                code: uniqueCode,
+                productName: "Advance Artificial Intelligence Projects with Python",
+                segment: "Youth",
+                price: "2000Rs",
+                duration: "1 Week",
+                mode: "Online",
+                level: "Basic"
+            };
+        } else if (productId === '2') {
+            productDetails = {
+                firstName: firstName,
+                lastName: lastName,
+                dob: dob,
+                code: uniqueCode,
+                productName: "Machine Learning",
+                segment: "Youth",
+                price: "1500Rs",
+                duration: "1 Week",
+                mode: "Online",
+                level: "Basic"
+            };
+        }
+
+        else if (productId === '3') {
+            productDetails = {
+              firstName: firstName,
+              lastName: lastName,
+              dob: dob,
+              code: uniqueCode,
+              productName: "Core java",
+              segment: "Youth",
+              price: "1000Rs",
+              duration: "1 Week",
+              mode: "Online",
+              level: "Basic"
+            };
+        }
+    
+        else if (productId === '4') {
+            productDetails = {
+              firstName: firstName,
+              lastName: lastName,
+              dob: dob,
+              code: uniqueCode,
+              productName: "advance java",
+              segment: "Youth",
+              price: "1100Rs",
+              duration: "1 Week",
+              mode: "Online",
+              level: "Basic"
+            };
+        }
+    
+        else if (productId === '5') {
+            productDetails = {
+              firstName: firstName,
+              lastName: lastName,
+              dob: dob,
+              code: uniqueCode,
+              productName: "python",
+              segment: "Youth",
+              price: "1200Rs",
+              duration: "1 Week",
+              mode: "Online",
+              level: "Basic"
+            };
+        }
+    
+        else if (productId === '6') {
+            productDetails = {
+              firstName: firstName,
+              lastName: lastName,
+              dob: dob,
+              code: uniqueCode,
+              productName: "javascript",
+              segment: "Youth",
+              price: "1000Rs",
+              duration: "1 Week",
+              mode: "Online",
+              level: "Basic"
+            };
+        }
+    
+        else if (productId === '7') {
+            productDetails = {
+              firstName: firstName,
+              lastName: lastName,
+              dob: dob,
+              code: uniqueCode,
+              productName: "swing",
+              segment: "Youth",
+              price: "1300Rs",
+              duration: "1 Week",
+              mode: "Online",
+              level: "Basic"
+            };
+        }
+    
+        else if (productId === '8') {
+            productDetails = {
+              firstName: firstName,
+              lastName: lastName,
+              dob: dob,
+              code: uniqueCode,
+              productName: "DSA",
+              segment: "Youth",
+              price: "900Rs",
+              duration: "1 Week",
+              mode: "Online",
+              level: "Basic"
+            };
+        }
+        // Add more product details for other productId values
+        
+        // Retrieve existing product details from localStorage
+        var existingProducts = JSON.parse(localStorage.getItem('products')) || [];
+        
+        // Check if a product with the same code already exists
+        var isProductExists = existingProducts.some(function(product) {
+            return product.productId ===productId ;
+        });
+        
+        if (isProductExists) {
+            alert('This product is already in your list.');
+        } else {
+            // Add new product details to the array
+            existingProducts.push(productDetails);
+            // Store the updated array back to localStorage
+            localStorage.setItem('products', JSON.stringify(existingProducts));
+            
+            document.getElementById('uniqueCode').innerText = uniqueCode;
+            document.getElementById('popup').style.display = 'block';
+
+            
+        }
+    });
+
+    function generateUniqueCode(firstName, lastName, dob) {
+    // Extract the first two characters of the first name and last name
+    var firstChars = firstName.substring(0, 2).toUpperCase();
+    var lastChars = lastName.substring(0, 2).toUpperCase();
+
+    // Extract the last two digits of the birth year
+    var yearDigits = dob.substring(6, 10);
+
+    // Combine the first two characters of the first name, last name, and the last two digits of the birth year
+    var uniqueCode = firstChars + lastChars + yearDigits;
+
+    return uniqueCode;
+}
+
+
+    
+    function generateRandomLetters(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+    
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+    
+    function submitCode() {
+        var enteredCode = document.getElementById('enteredCode').value;
+
+        // Check if enteredCode is not empty
+        if (enteredCode) {
+            // Check if the product already exists
+            var products = JSON.parse(localStorage.getItem('products')) || [];
+            var productId = enteredCode; // Assuming productId is the entered code
+
+            // Check if productId already exists
+            var productExists = products.some(function(product) {
+                return product.productId === productId;
+            });
+
+            if (productExists) {
+                alert('Product is already there.');
+            } else {
+                // Store entered code in localStorage
+                localStorage.setItem('enteredCode', enteredCode);
+
+                // Redirect to myproduct.html
+                alert("product added successfully");
+                window.location.href = 'myproduct.html';
+            }
+        } else {
+            alert('Please enter a valid code.');
+        }
+    }
+</script>
+
+    
+
+</body>
+</html>
+
+
