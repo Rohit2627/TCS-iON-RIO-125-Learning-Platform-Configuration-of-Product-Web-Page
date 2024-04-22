@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Bar</title>
+  <script src="https://kit.fontawesome.com/4668c2f386.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+       background-color:aquamarine;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: right;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin-left: 10px;
+    }
+
+    nav ul li:first-child {
+      margin-left: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+    }
+
+    nav ul li a {
+  position: relative; /* Ensure relative positioning for the pseudo-element */
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+/* Add a pseudo-element for the underline */
+nav ul li a::after {
+  content: ''; /* Required for pseudo-elements */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0; /* Start with width 0 */
+  height: 2px; /* Height of the underline */
+  background-color: #fff; /* Color of the underline */
+  transition: width 0.3s ease; /* Add transition for smooth animation */
+}
+
+/* Adjust the width of the pseudo-element on hover */
+nav ul li a:hover::after {
+  width: 100%; /* Expand the width to 100% on hover */
+}
+
+
+
+.profile-img {
+  width: 37px; /* Adjust width as needed */
+  height: 37px; /* Adjust height as needed */
+  border-radius: 70%; /* Make the image rounded */
+  margin-left: 5px; /* Add some space between text and image */
+
+}
+
+/* Add a pseudo-element for the underline */
+
+
+/* Adjust the width of the pseudo-element on hover */
+
+
+    
+   
+
+    .high {
+  text-align: center;
+  font-weight: bold;
+  background-color: #f2f2f2; /* Formal background color */
+  padding: 20px; /* Add padding for spacing */
+}
+
+
+    .content {
+      height: 500px;
+      background-size: cover;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+    }
+
+    .left img {
+      width: 100px;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .card {
+  position: relative; /* Add this line to make .overlay relative to .card */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: 20px;
+  text-align: center;
+  font-family: arial;
+  background-color: #0be0e3;
+}
+
+.image {
+  overflow: hidden; /* Ensures the image fits the container */
+}
+
+.image img {
+  width: 100%; /* Makes the image fill the container */
+}
+
+.description {
+  padding: 10px; /* Adding padding for spacing */
+}
+
+.details {
+  list-style-type: none; /* Removes bullet points */
+  padding: 0;
+}
+
+.details li {
+  margin-bottom: 5px; /* Adds space between list items */
+}
+
+.details li img {
+  width: 20px; /* Adjusts icon size */
+  margin-right: 5px; /* Adds space between icon and text */
+}
+
+.buy-now {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #ef09b2;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .buy-now:hover {
+      opacity: 0.7;
+      background-color: aqua;
+    }
+
+    .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #1ac03e;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+
+.card:hover .overlay {
+  height: 100%;
+}
+.overlay .price{
+    color: #000;
+}
+
+.pro::after {
+  display: none;
+}
+
+
+
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+.sidenav .profile {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.sidenav .profile-img {
+  width: 80px; /* Adjust width as needed */
+  height: 80px; /* Adjust height as needed */
+  border-radius: 50%; /* Make the image rounded */
+}
+
+.sidenav .profile p {
+  margin-top: 10px;
+  color: #fff;
+}
+
+.sidenav a {
+  /* Your existing styles */
+  display: block;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav hr {
+  border: 0;
+  border-top: 1px solid #818181;
+  margin: 20px 0;
+}
+
+.sidenav #logoutBtn {
+  background-color: #ef09b2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin-left: 40%;
+}
+
+.sidenav #logoutBtn:hover {
+  opacity: 0.7;
+  background-color: aqua;
+}
+
+
+.open{
+  cursor: pointer;
+}
+
+.card {
+  /* Your existing styles */
+  transition: transform 0.3s, box-shadow 0.3s; /* Add transition for smooth animation */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale up the card slightly on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a box shadow on hover */
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="left">
+        <img src="img/logo.png" alt="Company Logo">
+      </div>
+      <div class="right">
+        <ul>
+          <li><a href="#"> My Products</a></li>
+          <li><a href="#">Contacts</a></li>
+          <li><a href="#">About Us</a></li>
+          <span onclick="openNav()" class="open">
+          <img src="img/pro.jpg" class="profile-img">
+          </span>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="profile">
+      <img src="img/pro.jpg" alt="Profile Picture" class="profile-img">
+      <p>jerry27</p>
+    </div>
+    <hr>
+    <a href="#">Account</a>
+    <a href="#">Edit Profile</a>
+    <a href="#">My Products</a>
+    <a href="#">My Bookmarks</a>
+    <hr>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+
+  
+  <h2 class="high">Product Items</h2>
+  <div class="card-container">
+  <div class="card">
+    <div class="image">
+      <img src="img/p1.jpg" alt="Denim Jeans">
+    </div>
+    <div class="description">
+      <h3>Advance Artificial Intelligence Projects with Python</h3>
+      <p>Segment : Youth</p>
+      <p class="price">Pack Publishing : 2000Rs</p>
+      
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+
+    <div class="overlay">
+        <h3>Advance Artificial Intelligence Projects with Python</h3>
+
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error in vero omnis incidunt quidem facilis?</p>
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+      <p class="price">Pack Publishing : 2000Rs</p>
+      <button class="buy-now">Buy Now</button>
+
+    </div>
+     
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="image">
+      <img src="img/pro1.jpg" alt="Denim Jeans">
+    </div>
+    <div class="description">
+      <h3>Machine Learning</h3>
+      <p>Segment : Youth</p>
+      <p class="price">Pack Publishing : 1500Rs </p>
+      
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+
+    <div class="overlay">
+        <h3>Machine Learning</h3>
+
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error in vero omnis incidunt quidem facilis?</p>
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+      <p class="price">Pack Publishing : 1500Rs</p>
+      <button class="buy-now">Buy Now</button>
+
+    </div>
+     
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="image">
+      <img src="img/pro2.jpg" alt="Denim Jeans">
+    </div>
+    <div class="description">
+      <h3>Core Java</h3>
+      <p>Segment : Youth</p>
+      <p class="price">Pack Publishing : 1000Rs</p>
+      
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+
+    <div class="overlay">
+        <h3> Core Java</h3>
+
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error in vero omnis incidunt quidem facilis?</p>
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+      <p class="price">Pack Publishing : 1000Rs</p>
+      <button class="buy-now">Buy Now</button>
+
+    </div>
+     
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="image">
+      <img src="img/pro3.jpg" alt="Denim Jeans">
+    </div>
+    <div class="description">
+      <h3>Advance Java</h3>
+      <p>Segment : Youth</p>
+      <p class="price">Pack Publishing : 1100Rs</p>
+      
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+
+    <div class="overlay">
+        <h3> Advance Java</h3>
+
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error in vero omnis incidunt quidem facilis?</p>
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+      <p class="price">Pack Publishing : 1100Rs</p>
+      <button class="buy-now">Buy Now</button>
+
+    </div>
+     
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="image">
+      <img src="img/pro4.jpg" alt="Denim Jeans">
+    </div>
+    <div class="description">
+      <h3>Python</h3>
+      <p>Segment : Youth</p>
+      <p class="price">Pack Publishing : 1200Rs</p>
+      
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+
+    <div class="overlay">
+        <h3> Python</h3>
+
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error in vero omnis incidunt quidem facilis?</p>
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+      <p class="price">Pack Publishing : 1200Rs</p>
+      <button class="buy-now">Buy Now</button>
+
+    </div>
+     
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="image">
+      <img src="img/pro5.jpg" alt="Denim Jeans">
+    </div>
+    <div class="description">
+      <h3>Core Java</h3>
+      <p>Segment : Youth</p>
+      <p class="price">Pack Publishing : 1000Rs</p>
+      
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+
+    <div class="overlay">
+        <h3> Core Java</h3>
+
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error in vero omnis incidunt quidem facilis?</p>
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+      <p class="price">Pack Publishing : 1000Rs</p>
+      <button class="buy-now">Buy Now</button>
+
+    </div>
+     
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="image">
+      <img src="img/pro6.jpg" alt="Denim Jeans">
+    </div>
+    <div class="description">
+      <h3>Swing</h3>
+      <p>Segment : Youth</p>
+      <p class="price">Pack Publishing : 1300Rs</p>
+      
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+
+    <div class="overlay">
+        <h3> Swing</h3>
+
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error in vero omnis incidunt quidem facilis?</p>
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+      <p class="price">Pack Publishing : 1300Rs</p>
+      <button class="buy-now">Buy Now</button>
+
+    </div>
+     
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="image">
+      <img src="img/pro7.jpg" alt="Denim Jeans">
+    </div>
+    <div class="description">
+      <h3>DSA</h3>
+      <p>Segment : Youth</p>
+      <p class="price">Pack Publishing : 900Rs</p>
+      
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+
+    <div class="overlay">
+        <h3> DSA</h3>
+
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error in vero omnis incidunt quidem facilis?</p>
+      <ul class="details">
+        <li><i class="fa-solid fa-stopwatch"></i> &nbsp;1 Week</li>
+        <li><i class="fa-solid fa-earth-americas"></i> &nbsp; Online</li>
+        <li><i class="fa-solid fa-signal"></i> &nbsp; Basic</li>
+      </ul>
+      <p class="price">Pack Publishing : 900Rs</p>
+      <button class="buy-now">Buy Now</button>
+
+    </div>
+     
+    </div>
+  </div>
+  <!-- --------------------------------------------------------------------------------------- -->
+  </div>
+  
+  
+<footer>
+    <p>&copy; 2024 Your Company. All rights reserved.</p>
+  </footer>
+
+  </body>
+  
+ 
+
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", function() {
+      // Add logout functionality here
+      console.log("Logout clicked");
+      
+      // Redirect to the home page
+      window.location.href = "index.html"; // Replace "index.html" with your actual home page URL
+    });
+
+
+  
+
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "40%";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+  </script>
+</body>
+</html>

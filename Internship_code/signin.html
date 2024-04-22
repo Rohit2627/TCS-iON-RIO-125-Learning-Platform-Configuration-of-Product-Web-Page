@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <script src="https://kit.fontawesome.com/4668c2f386.js" crossorigin="anonymous"></script>
+
+<style>
+  body, html {
+      height: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .bg-img {
+      /* The image used */
+      background-image: url("img/nature.jpg");
+
+      /* Control the height of the image */
+      min-height: 100%;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    /* Add styles to the form container */
+    .container {
+      position: absolute;
+      right: 0;
+      margin: 20px;
+      max-width: 350px;
+      padding: 15px;
+      background-color: rgb(11, 238, 140);
+    }
+
+    /* Full-width input fields */
+    input[type=text], input[type=password], input[type=email] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 10px 0;
+      border-radius: 5px;
+      background: #f1f1f1;
+    }
+
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for the submit button */
+    .btn {
+      background-color: #0c61f5;
+      color: rgb(237, 222, 222);
+      padding: 10px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+      font-weight: bolder;
+    }
+
+    .btn:hover {
+      opacity: 1;
+    }
+
+       /* Style for the headings */
+    .headings {
+      text-align: center;
+      
+    }
+
+  
+    /* Style for the social media icons */
+    .social-icons {
+  text-align: center;
+ 
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 10px;
+  border: 2px solid #ccc;
+  border-radius: 55%;
+  padding: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.social-icons a i {
+  font-size: 15px;
+}
+
+.social-icons a i:hover {
+  transform: scale(1.1); /* Increased size on hover */
+  border-color: #04AA6D; /* Changed border color on hover */
+  color: rgb(237, 11, 162);
+}
+
+.head{
+  text-align: center;
+}
+
+  </style>
+</style>
+</head>
+<body>
+  <div class="bg-img">
+    <form class="container" id="signup-form">
+      <h2 class="head">Sign Up</h2>
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="enter username">
+      </div>
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="enter email" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="password" required>
+      </div>
+      <div class="input-group">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="confirm password" required>
+      </div>
+      <button type="submit" class="btn">Sign Up</button>
+
+    
+      
+      <div class="headings">
+        <h4>Create Your TCSiON Account</h4>
+        <p>Use social media credentials</p>
+      </div>
+      
+      <div class="social-icons">
+        <a href="login.html"><i class="fa-solid fa-envelope"></i></a>
+        <a href="login.html"><i class="fa-brands fa-github"></i></a>
+        <a href="login.html"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="login.html"><i class="fa-brands fa-google"></i></a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const signupForm = document.getElementById('signup-form');
+
+    signupForm.addEventListener('submit', function(event) {
+      event.preventDefault();  // Prevent default form submission
+
+      // Get input values
+      var username = document.getElementById('username').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value.trim();
+      var confirmPassword = document.getElementById('confirm-password').value.trim();
+
+      // Simple validation
+      if (username === '' || email === '' || password === '' || confirmPassword === '') {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      // Password validation
+      if (!isValidPassword(password)) {
+        alert('Password must be at least 8 characters long, start with a capital letter, and contain at least one special symbol');
+        return;
+      }
+
+      // Confirm password match
+      if (password !== confirmPassword) {
+        alert('Password and confirm password should match');
+        return;
+      }
+
+      // Simulate signup process (replace with actual signup logic)
+      console.log('User signed up successfully!');
+
+      // Redirect to login page
+      window.location.href = 'login.html';
+    });
+
+    // Function to validate password
+    function isValidPassword(password) {
+      var regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
+      return regex.test(password);
+    }
+  </script>
+</body>
+</html>
